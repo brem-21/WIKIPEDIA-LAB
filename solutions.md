@@ -258,4 +258,4 @@ pandas_wiki_totals.plot(kind='line',figsize=(12,6))
 
 
 ### All bash commands executed
-![alt text](all_in_one.png)
+![alt text](Images/all_in_one.png)
