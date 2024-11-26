@@ -15,7 +15,7 @@ This project analyzes user interactions with Wikipedia pages, recorded in the Wi
   |-- wiki: string (nullable = true)
 
   |-- title: string (nullable = true)
-  
+
   |-- views: long (nullable = true)
 
 
@@ -210,3 +210,52 @@ pandas_wiki_totals.plot(kind='line',figsize=(12,6))
 
 
 
+# EXERCISE 2
+
+
+
+- Opening an interactive shell with your docker container using command prompt
+
+- Running containers 
+![alt text](Images/building_docker_image.png)
+
+```bash
+  docker exec -it <container-id> /bin/bash
+```
+
+- To see all topics, run
+```bash
+  kafka-topics --list --bootstrap-server localhost:29092
+```
+![alt text](Images/device_data.png)
+
+**Writing Spark to read the device data from the topic and writing it a console sink**
+- A running Docker container named ed-spark-jupyter-lab (or equivalent) for Spark and Jupyter Lab to be able to start the Spark session in the Jupyter Lab.
+
+```bash
+  kafka-console-producer --topic device-data --bootstrap-server localhost:29092
+```
+**Sample JSON data in the opened terminal**
+
+```bash
+  {"eventId": "7146c4a8-54ed-4075-b013-c2d99e65d295", "eventOffset": 10012, "eventPublisher": "device", "customerId": "CI00117", "data": {"devices": [{"deviceId": "D002", "temperature": 5, "measure": "C", "status": "SUCCESS"}]}, "eventTime": "2023-01-05 11:13:53.643895"}
+```
+![alt text](Images/interactive.png)
+
+- Execute the code to create the kafka_df dataframe
+ - Run the rest of the code in the 03_reading_from_kafka.ipynb script and write the output to console sink to check the output (the last block of code)
+
+**Adding more data**
+```bash
+{"eventId": "1f547fd-e335-457e-9a1f-686cfbe903e3", "eventOffset": 10013, "eventPublisher": "device", "customerId": "CI00103", "data": {"devices": [{"deviceId": "D004", "temperature": 23, "measure": "C", "status": "SUCCESS"}]}, "eventTime": "2023-01-05 11:13:53.643895"}
+{"eventId": "692e9999-1110-4441-a20e-fd76692e2c17", "eventOffset": 10014, "eventPublisher": "device", "customerId": "CI00109", "data": {"devices": [{"deviceId": "D003", "temperature": 18, "measure": "C", "status": "ERROR"}]}, "eventTime": "2023-01-05 11:13:53.643895"}
+{"eventId": "a25e37a0-1488-411c-bb6d-f3f14e9bdd39", "eventOffset": 10061, "eventPublisher": "device", "customerId": "CI00115", "data": {"devices": [{"deviceId": "D004", "temperature": 27, "measure": "C", "status": "STANDBY"}, {"deviceId": "D003", "temperature": 4, "measure": "C", "status": "STANDBY"}, {"deviceId": "D003", "temperature": 12, "measure": "C", "status": "STANDBY"}]}, "eventTime": "2023-01-05 11:13:53.650859"}
+{"eventId": "0468eae2-156e-4aa0-b730-b8d661b6f075", "eventOffset": 10073, "eventPublisher": "device", "customerId": "CI00119", "data": {"devices": []}, "eventTime": "2023-01-05 11:13:53.650859"}
+
+```
+
+![alt text](<Images/Screenshot 2024-11-26 161357.png>)
+
+
+### All bash commands executed
+![alt text](all_in_one.png)
