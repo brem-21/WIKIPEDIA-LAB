@@ -9,9 +9,13 @@ This project analyzes user interactions with Wikipedia pages, recorded in the Wi
 
 ### Schema of the Data
   root
+
   |-- datehour: timestamp (nullable = true)
+
   |-- wiki: string (nullable = true)
+
   |-- title: string (nullable = true)
+  
   |-- views: long (nullable = true)
 
 
@@ -203,3 +207,6 @@ pandas_wiki_totals.plot(kind='line',figsize=(12,6))
 - Traffic for en generally decreases during early hours (around 03-01 06) and then starts to rise later in the day.Traffic for en.m spikes significantly early in the day (03-01 06) and then dips, eventually surpassing desktop traffic during the later hours.There is an interesting crossover point where en.m traffic overtakes en traffic.
 
 ![alt text](Images/stack.png)
+
+
+
